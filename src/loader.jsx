@@ -22,9 +22,17 @@ let animationList = null
 if (!renderer) {
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  
-  sceneRef.current= document.body.appendChild(renderer.domElement);
+  var pos = document.getRootNode().getElementById('cv');
+  if (pos){
+    sceneRef.current= pos.appendChild(renderer.domElement);
+
+  }
+  else{
+    sceneRef.current= document.body.appendChild(renderer.domElement);
+
+  }
 }
+
 if (!sceneRef.current && renderer) {
 
 }
@@ -92,3 +100,32 @@ export {
   animationMixer,
   animationList
 };
+function changeCanvas(newCanvasId, containerId) {
+  // Get the old canvas
+  const oldCanvas = document.getElementById('bg');
+  
+  // If the old canvas exists, remove it
+  if (oldCanvas) {
+    oldCanvas.parentNode.removeChild(oldCanvas);
+  }
+  
+
+  
+  // Get the container element
+  const container = document.getElementById(containerId);
+  
+  // If the container exists, append the new canvas to it
+  if (container) {
+    container.appendChild(renderer.domElement);
+  } else {
+    // If the container doesn't exist, append the new canvas to the body
+    document.body.appendChild(renderer.domElement);
+  }
+  
+  // Update the renderer to use the new canvas
+  
+  // Resize the renderer
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+export { changeCanvas };

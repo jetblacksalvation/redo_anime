@@ -7,7 +7,7 @@ const create3DWindow = () =>{
   ReactDOM.createRoot(document.getRootNode().getElementById('root')).render(
     <React.StrictMode>
       <App />
-    </React.StrictMode>,
+    </React.StrictMode>
   )
 }
 // createRoot();

@@ -3,11 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import * as loader from './loader'
+const SetCanvas = () =>{
+  
+}
+
 const PrintArray = () =>{
   console.log( loader.animationList)
   return 
 }
-const changeAnimation = (index) => {
+const ChangeAnimation = (index) => {
   // Ensure that the index is within bounds
   if (index >= 0 && index < loader.animationList.length) {
     loader.animationMixer.stopAllAction(); // Stop any ongoing animations
@@ -42,4 +46,4 @@ const App = ()=>{
 }
 
 export default App
-export {PrintArray, App, changeAnimation};
+export {PrintArray, App, ChangeAnimation};

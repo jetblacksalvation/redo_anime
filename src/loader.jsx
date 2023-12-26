@@ -19,9 +19,14 @@ let model = null;
 let animationMixer = null;
 // Check if the elements already exist, if not, create them
 let animationList = null
-if (!sceneRef.current) {
-  sceneRef.current = document.createElement('div');
-  document.body.appendChild(sceneRef.current);
+if (!renderer) {
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  
+  sceneRef.current= document.body.appendChild(renderer.domElement);
+}
+if (!sceneRef.current && renderer) {
+
 }
 
 if (!scene) {
@@ -32,11 +37,6 @@ if (!camera) {
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 }
 
-if (!renderer) {
-  renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  sceneRef.current.appendChild(renderer.domElement);
-}
 
 if (!loader) {
   loader = new GLTFLoader();

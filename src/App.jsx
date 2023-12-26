@@ -3,14 +3,23 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import * as loader from './loader'
-
-
+const PrintArray = () =>{
+  console.log( loader.animationList)
+  return 
+}
+const changeAnimation = (index) => {
+  // Ensure that the index is within bounds
+  if (index >= 0 && index < loader.animationList.length) {
+    loader.animationMixer.stopAllAction(); // Stop any ongoing animations
+    loader.animationMixer.clipAction(loader.animationList[index]).play(); // Play the selected animation
+  }
+}
 const App = ()=>{
 
   useEffect(() =>{
 
     const animate = () => {
-      console.log(loader.animationList, 'is list')
+      // console.log(loader.animationList, 'is list')
 
       requestAnimationFrame(animate);
 
@@ -33,3 +42,4 @@ const App = ()=>{
 }
 
 export default App
+export {PrintArray, App, changeAnimation};
